@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{{title}}</title>
+        <style>
+            .error {
+                color: red;
+            }
+            ul {
+                list-style-type: none;
+            }
+            span {
+                margin: 5px;
+            }
+        </style>
+    </head>
+<body>
+
+    <span>
+        <a href='/blog'>Main Blog Page</a>
+    </span>
+    <span>
+        <a href='/newblog'>Make a New Blog</a>
+    </span>
+
+    {% block content %}
+    {% endblock %}
+
+</body>
+</html>
