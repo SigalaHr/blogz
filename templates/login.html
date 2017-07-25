@@ -1,14 +1,24 @@
 {% extends "base.html" %}
 {% block content %}
-
-    <h2>Login</h2>
+<div class="container">
+  <div class="jumbotron">
+    <h1>Login</h2>
   </div>
 </div>
 <form action="/login" method="post">
-  <p><label>Username<input type="text" name="username"/></label></p>
-  <p><label>Password<input type="password" name="password"/></label></p>
-  <p><input type="submit" value="Login"/></p>
+  <div class="form-group">
+    <p><label>Username<input type="text" class="form-control" name="username" placeholder="Email"/></label></p>
+  </div>
+  <div class="form-group">
+    <p><label>Password<input type="password" class="form-control" name="password" placeholder="Password"/></label></p>
+  </div>
+
+  <div>
+    <button type="submit" class="btn btn-primary">Login</button>
+  </div>
+  <div>
   <p>Don't have an account? <a href='/signup'>Create One!</a></p>
+  </div>
 </form>
 
 {% endblock %}

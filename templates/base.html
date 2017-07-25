@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html>
     <head>
+      <title>Blogz</title>
+      <link href="{{ url_for('static', filename='css/bootstrap.css') }}" rel="stylesheet">
+      <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
       <style type="text/css">
-          .error {
-              color: red;
+          .font {
+              font-size: 20px;
           }
       </style>
     </head>
     <body>
-      <div>
-        <a href="/">home</a> | <a href="blog">all posts</a> | <a href="newblog">new post</a> | <a href="login">login</a> | 
+      <div class="btn-group btn-group-justified">
+        <a href="/" class="btn btn-primary">home</a>
+        <a href="blog" class="btn btn-primary">all posts</a>
+        <a href="newblog" class="btn btn-primary">new post</a>
         {% if 'user' in session %}
-            <strong>{{ session['user'] }}</strong>
-            <a href="logout">logout</a>
+            <a href="logout" class="btn btn-primary"><strong class="font">{{ session['user'] }}</strong> logout</a>
+            {% else %}
+            <a href="login" class="btn btn-primary">login</a>
         {% endif %}
       </div>
 
@@ -20,14 +26,17 @@
         {% if messages %}
           <ul class=flashes>
             {% for message in messages %}
-            <li>{{ message }}</li>
+            <div class="alert alert-danger">
+              <li>{{ message }}</li>
+            </div>
             {% endfor %}
           </ul>
         {% endif %}
       {% endwith %}
-
+      <div style="text-align:center;">
       {% block content %}
       {% endblock %}
+      </div>
 
     </body>
 </html>

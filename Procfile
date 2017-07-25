@@ -1,0 +1,1 @@
+web: blogz app:app
