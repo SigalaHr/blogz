@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>{{ title }}</h1>
+
+    <h2>{{ user.username }}</h2>
+
+    {% if not blogs %}
+        <p>No blogs yet</p>
+    {% endif %}
+
+    {% for blog in blogs %}
+        <h2>
+            <a href="/blog?id={{ blog.id }}">{{ blog.title }}</a>
+        </h2>
+        <p>{{ blog.body }}</p>
+
+        {# TODO: add formatted date to this statement #}
+        <p>Written by <a href="/blog?user={{ blog.owner.username }}">{{ blog.owner.username }}</a> on </p>
+        <hr/>
+    {% endfor %}
+
+{% endblock content %}

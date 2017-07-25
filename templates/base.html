@@ -1,33 +1,30 @@
 <!DOCTYPE html>
-<html>
-    <head>
-      <style type="text/css">
-          .error {
-              color: red;
-          }
-      </style>
-    </head>
-    <body>
-      <div>
-        <a href="/">home</a> | <a href="blog">all posts</a> | <a href="newblog">new post</a> | <a href="login">login</a> | 
-        {% if 'user' in session %}
-            <strong>{{ session['user'] }}</strong>
-            <a href="logout">logout</a>
-        {% endif %}
-      </div>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+<div>
+    <a href="/">home</a> | <a href="blog">all posts</a> | <a href="newblog">new post</a> | <a href="login">login</a> |
+    {% if 'user' in session %}
+        <strong>{{ session['user'] }}</strong>
+        <a href="logout">logout</a>
+    {% endif %}
+</div>
 
-      {% with messages = get_flashed_messages() %}
-        {% if messages %}
-          <ul class=flashes>
-            {% for message in messages %}
-            <li>{{ message }}</li>
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <ul>
+            {% for category, message in messages %}
+                <li class="{{ category }}">{{ message }}</li>
             {% endfor %}
-          </ul>
-        {% endif %}
-      {% endwith %}
+        </ul>
+    {% endif %}
+{% endwith %}
 
-      {% block content %}
-      {% endblock %}
+{% block content %}
+{% endblock %}
 
-    </body>
+</body>
 </html>

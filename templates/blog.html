@@ -1,23 +1,29 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>{{title}}</h1>
+    <h1>{{ title }}</h1>
 
     {% if not blogs %}
-    <p>No blogs yet</p>
+        <p>No blogs yet</p>
     {% endif %}
+
     {% if blog %}
-        <h2>{{blog.title}}</h2>
-        <p>{{blog.body}}</p>
-        <p>written by <a href="/blog?user={{ blog.owner.username }}">{{blog.owner.username}}</a></p>
+        <h2>{{ blog.title }}</h2>
+        <p>{{ blog.body }}</p>
+
+        {# TODO: add formatted date to this statement #}
+        <p>Written by <a href="/blog?user={{ blog.owner.username }}">{{ blog.owner.username }}</a> on </p>
+
     {% else %}
         {% for blog in blogs %}
-        <h2>
-            <a href="/blog?id={{ blog.id }}">{{blog.title}}</a>
-        </h2>
-        <p>{{blog.body}}</p>
-        <p>written by <a href="/blog?user={{ blog.owner.username }}">{{blog.owner.username}}</a></p>
-        <hr />
+            <h2>
+                <a href="/blog?id={{ blog.id }}">{{ blog.title }}</a>
+            </h2>
+            <p>{{ blog.body }}</p>
+
+            {# TODO: add formatted date to this statement #}
+            <p>Written by <a href="/blog?user={{ blog.owner.username }}">{{ blog.owner.username }}</a> on </p>
+            <hr/>
         {% endfor %}
     {% endif %}
 
