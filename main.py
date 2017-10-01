@@ -104,7 +104,6 @@ def index():
     blog_id = request.args.get('id')
     if blog_id is None:
         return render_template('blog.html', title="blog posts", user=get_users(), blogs=get_blogs())
-        #return redirect("/blog?id=None")
     blog = Blog.query.get(blog_id)
     return render_template('blog.html', title="blog posts", blog=blog, blogs=get_blogs())
 
